@@ -12,6 +12,18 @@ Read this fully before doing anything. It replaces any need to ask the user what
 - Never use the em dash character in any text.
 - Time is short: about 3 hours today, 6 tomorrow, 3.5 on the last day. Prefer the simplest thing that runs. Hard-coded parameters are fine. Say so when you cut a corner.
 
+## If the user is the teammate (A line)
+
+Boting has one teammate who may open this repo in their own VS Code. If the user says they are the teammate, or asks about raw plots or the rolling-window baseline, assume the A line, not the B line:
+
+- Follow the **A line** in `TASKS_day1.md` (it is in Chinese; translate it for them if needed). Everything in "What the project is", "The data" and "Conventions every model must follow" below still applies.
+- Edit only `notebooks/01_raw_plots.ipynb` and `notebooks/02_baseline_centiles.ipynb` (and `src/subsample.py` for A3). Never touch `notebooks/03_pcntoolkit_blr.ipynb`; that is Boting's.
+- No PCNtoolkit. pandas, numpy, matplotlib are enough. No conda environment setup needed.
+- **If they join late, do A2 first** (rolling-window baseline centiles, `results/baseline_rolling/centiles.csv` and `zscores.csv`). The end-of-day comparison figure needs that file. Then a reduced A1: two plots only (all 322 samples coloured by protocol; Velasco subset coloured by publication). Skip A3.
+- Use `data/split_velasco.csv` for train/test. Never refit the split.
+- Work in the language they write in. Do not assume they need statistics taught step by step; ask once how much detail they want.
+- Same git rule: `git pull` first, commit small and often, push after every finished block.
+
 ## What the project is
 
 Pediatric growth charts place a child on a percentile curve for their age. We build the same thing for brain organoids: x = days in culture, y = the fraction of one cell type (first: neural progenitors), and a set of centile curves (5th, 25th, 50th, 75th, 95th) with a z-score for every organoid. The method is normative modelling, the family behind brain charts in neuroimaging (Bethlehem et al. 2022). The tool is PCNtoolkit, Bayesian linear regression (BLR). The user went to Johanna Bayer's PCNtoolkit tutorial on Oct 2 and will try to adapt its notebook.

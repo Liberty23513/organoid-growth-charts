@@ -32,7 +32,7 @@
 
 **A1. 原始数据图集（60 分钟）** `notebooks/01_raw_plots.ipynb`
 - 全部 322 个样本：age 对 frac_NPC_IP 散点，按 protocol 上色。只保留样本数 ≥ 7 的 protocol，其他合并为 other。
-- Velasco 子集：age 对 frac_NPC_IP、frac_neuron、frac_glia 三张图，按 publication 上色。看每篇文章覆盖的年龄段（Velasco 2019 只有 101 到 190 天）。
+- Velasco 子集：age 对 frac_NPC_IP、frac_neuron、frac_glia 三张图，按 publication 上色。看每篇文章覆盖的年龄段。注意区分 protocol 和 publication：Velasco protocol 共 131 个样本，21 到 192 天；其中 publication 为 Velasco 2019 的只有 21 个样本，且只覆盖 101 到 190 天。
 - Lancaster 子集：同样三张。
 - 每篇 publication 的样本数和年龄范围表，存成 `results/data_summary.csv`。
 - 输出到 `figures/raw_*.png`。

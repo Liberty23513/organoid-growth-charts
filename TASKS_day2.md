@@ -59,7 +59,45 @@ def fit_growth_chart(df, y_col, split_col="split", model_name="final", batch=Non
 2. Velasco，frac_neuron 和 frac_glia。输出 `results/final_velasco_neuron/`、`results/final_velasco_glia/`，各一张图。
 3. 做得完的话，一张 2×2 拼图：Velasco NPC / Velasco neuron / Velasco glia / Lancaster NPC。
 
-**组员今天没来：** B 线不为 A 线中断。A2 在 B 线全部做完后由 Boting 用 20 分钟做最简版；A1 明天上午做；下午 3 的扩展砍到只剩 Lancaster NPC，排明天上午。
+## 协作方式：fork + pull request
+
+主 repo 是 `Liberty23513/organoid-growth-charts`（下面叫 upstream）。组员在自己的 fork 上工作，通过 pull request 合进来。
+
+**组员，一次性设置：**
+```bash
+git remote add upstream https://github.com/Liberty23513/organoid-growth-charts.git
+git remote -v        # 应该看到 origin（自己的 fork）和 upstream（主 repo）
+```
+
+**组员，每次开工前和 15:00 拿 B 线函数时：**
+```bash
+git fetch upstream
+git merge upstream/main
+```
+
+**组员，每完成一块：**
+```bash
+git add <自己的文件>
+git commit -m "A2: rolling-window baseline"
+git push origin main
+```
+然后在 GitHub 自己的 fork 页面点 Contribute → Open pull request，目标是 Liberty23513/organoid-growth-charts 的 main。
+
+**Boting：** 在主 repo 的 Pull requests 页面看到 PR，点 Merge pull request。合完之后本地 `git pull` 拿到组员的结果。
+
+**文件归属（避免冲突的唯一规则）。** 每个文件只有一个人改。notebook 文件冲突几乎无法手动合并，所以这条必须守住。
+
+| 归 Boting | 归组员 |
+|---|---|
+| `notebooks/03_pcntoolkit_blr.ipynb`, `04_*`, `05_subsampling.ipynb` | `notebooks/01_raw_plots.ipynb`, `02_baseline_centiles.ipynb`, `06_extensions.ipynb` |
+| `src/growth_chart.py` | `data/split_lancaster.csv` |
+| `results/blr_*`, `results/final_velasco_npc/` | `results/baseline_rolling/`, `results/data_summary.csv`, `results/final_lancaster_npc/`, `results/final_velasco_neuron/`, `results/final_velasco_glia/` |
+| `figures/calibration_*`, `figures/final_velasco_npc.png`, `figures/subsampling_*` | `figures/raw_*`, `figures/baseline_rolling_*`, `figures/final_lancaster_*`, `figures/final_velasco_neuron*`, `figures/final_velasco_glia*` |
+| `README.md`, `CLAUDE.md`, `TASKS_*.md` | `STATUS_A.md`（组员的 Day 2 status 写这里，Boting 合进 README） |
+
+`src/growth_chart.py` 有 bug 或缺参数：组员不要自己改，在 PR 或当面告诉 Boting。组员需要的辅助函数放在自己的 notebook 里。
+
+**节奏：** 组员每完成一块（A0、A2、A1、每个扩展）开一个 PR，不要攒到最后。Boting 每次看到就合，合之前不需要细看代码，只确认改的都是组员名下的文件（PR 页面的 Files changed 标签）。
 
 ## 同步点
 

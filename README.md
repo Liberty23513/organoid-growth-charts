@@ -71,6 +71,10 @@ several pooled.
   the centiles move. Stratify by age bin (counts per bin 0-30/30-60/60-90/90-120/120-200 days are
   11/41/16/34/29), otherwise small subsets miss whole age ranges.
 
+## Final model (decided Day 2, Oct 6)
+
+PCNtoolkit BLR on logit(y), cubic B-spline on age, heteroskedastic, `publication` batch effect (mean offset and per-publication noise). Velasco test set: MSLL -1.40, z skewness 0.78, no negative centiles; best of six models including the model-free baseline (`results/blr_metrics.csv`, `notebooks/03_pcntoolkit_blr.ipynb` step 9). Code: `src/growth_chart.py`, `fit_growth_chart()`.
+
 ## Environment
 
 ```

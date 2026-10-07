@@ -114,7 +114,7 @@ for name in ["baseline_rolling", "blr_homo", "blr_hetero", "blr_hetero_batch", "
     rows.append([labels[name], f"{m.loc[name,'MSLL']:.2f}", f"{m.loc[name,'z_skew']:.2f}", neg[name]])
 table(s, rows, 0.6, 4.95, 6.4, col_w=[3.1, 1.0, 1.0, 1.3], size=11, bold_last=True)
 s.shapes.add_picture(str(FIG / "calibration_blr_hetero_batch_logit.png"), Inches(7.1), Inches(1.5), width=Inches(6.1))
-bullets(s, ["Final model calibration on the 26 test organoids: z roughly N(0,1) overall, in every age bin, in every publication. Remaining skew 0.78 comes from three day-32 organoids near zero."], 7.1, 3.3, 6.1, 1.5, size=13)
+bullets(s, ["Final model calibration on the 26 test organoids: z roughly N(0,1) overall, in every age bin, in every publication. Remaining skew 0.78 is driven by one test organoid at day 70 with 84% progenitors (z = +2.7)."], 7.1, 3.3, 6.1, 1.5, size=13)
 footer(s, "MSLL: mean standardized log loss, more negative is better. Baseline is the teammate's model-free rolling-window quantiles (+/- 15 days).")
 
 # ---- 5 result

@@ -32,7 +32,7 @@ The tool is PCNtoolkit, Bayesian linear regression. The mean is a B-spline on ag
 
 We added one ingredient at a time, each fixing one failure you can see in the data. First, sigma that depends on age: the spread is three times larger at day 30 than at day 100. Second, publication as a batch effect: each lab gets its own offset and its own noise level. Third, a logit transform of y, because fractions are bounded at zero and the Gaussian centiles were going negative.
 
-The table shows six models on the same 26 test organoids. We picked by MSLL, which scores the whole predictive distribution, then by whether the z-scores look like a standard normal. The final model has the best MSLL, skewness down from 2.0 to 0.8, and a 5th centile that never goes below zero. The calibration plots on the right show z roughly normal in every age bin and every publication.
+The table shows six models on the same 26 test organoids. We picked by MSLL, which scores the whole predictive distribution, then by whether the z-scores look like a standard normal. The final model has the best MSLL, skewness down from 2.0 to 0.8 (what remains is one day-70 test organoid with far too many progenitors), and a 5th centile that never goes below zero. The calibration plots on the right show z roughly normal in every age bin and every publication.
 
 > 中文提示：被问 MSLL 是什么，一句话：预测分布给每个 test 样本打的分，σ 太宽太窄都扣分，越负越好。被问为什么不用 GAMLSS：同一族方法，PCNtoolkit 是周五 tutorial 教的，有现成人手。
 

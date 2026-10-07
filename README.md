@@ -75,6 +75,12 @@ several pooled.
 
 PCNtoolkit BLR on logit(y), cubic B-spline on age, heteroskedastic, `publication` batch effect (mean offset and per-publication noise). Velasco test set: MSLL -1.40, z skewness 0.78, no negative centiles; best of six models including the model-free baseline (`results/blr_metrics.csv`, `notebooks/03_pcntoolkit_blr.ipynb` step 9). Code: `src/growth_chart.py`, `fit_growth_chart()`.
 
+## Day 2 status (Oct 6)
+
+- **Done.** Six models compared on the Velasco test set; final model chosen (logit + heteroskedastic + publication batch BLR, `src/growth_chart.py`). Final chart `figures/final_velasco_npc.png` flags five atypical organoids (|z| > 1.96). Calibration figures, model-free baseline (teammate), raw data atlas (teammate, PR #2), Lancaster NPC and Velasco neuron/glia charts (`figures/final_overview_2x2.png`), subsampling (`figures/subsampling_summary.png`): about 40 organoids is the minimum, 80 is stable; below about 10 per lab, drop the batch effect.
+- **Limits.** Lancaster has no data between day 63 and day 120 and test z sd 1.6, so it is a demo, not a result. Glia is near zero before day 90. Velasco 2019 has no early samples, so its own curve is extrapolated; all charts draw Paulsen 2022's curve. Subsamples come from the same 105 samples, so the n = 80 stability is optimistic.
+- **First thing tomorrow.** Write the 5 slides (problem, data, method, final chart, subsampling); README results section.
+
 ## Environment
 
 ```

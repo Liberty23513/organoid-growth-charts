@@ -179,11 +179,18 @@ def plot_growth_chart(centiles, zscores, title=None, path=None, y_label=None, an
     annotate_z  e.g. 1.96: ring samples with |z| above it in red and write their z next to them.
     """
     if ax is None:
-        _, ax = plt.subplots(figsize=(8, 4.8))
+        _, ax = plt.subplots(figsize=(10, 4.8))
     ax.fill_between(centiles["age"], centiles["p5"], centiles["p95"], color="0.85", alpha=0.5, lw=0)
     for col, ls, lw in [("p5", ":", 1.2), ("p25", "--", 1.2), ("p50", "-", 2), ("p75", "--", 1.2), ("p95", ":", 1.2)]:
         ax.plot(centiles["age"], centiles[col], color="0.25", ls=ls, lw=lw)
-        ax.text(centiles["age"].iloc[-1] + 2, centiles[col].iloc[-1], col, va="center", fontsize=8, color="0.25")
+    # Centile labels at the right end, pushed apart so they never overlap.
+    y_range = max(zscores["y"].max(), centiles["p95"].max()) - min(0, centiles["p5"].min())
+    gap = 0.045 * y_range
+    label_y = list(centiles[CENTILE_COLS].iloc[-1].values)
+    for i in range(1, 5):
+        label_y[i] = max(label_y[i], label_y[i - 1] + gap)
+    for col, ly in zip(CENTILE_COLS, label_y):
+        ax.text(centiles["age"].iloc[-1] + 2, ly, col, va="center", fontsize=8, color="0.25")
 
     pubs = sorted(zscores["publication"].unique())
     extra = iter(EXTRA_COLORS + list(PUB_COLORS.values()))
@@ -198,9 +205,18 @@ def plot_growth_chart(centiles, zscores, title=None, path=None, y_label=None, an
         out = zscores[zscores["z"].abs() > annotate_z]
         ax.scatter(out["age"], out["y"], s=130, facecolors="none", edgecolors="#B00020", lw=1.5,
                    label=f"|z| > {annotate_z}", zorder=5)
+        # One label per cluster of flagged samples (same age within 3 days, y within 8% of the range).
+        out = out.sort_values(["age", "y"])
+        clusters = []
         for _, r in out.iterrows():
-            ax.annotate(f"z={r['z']:.1f}", (r["age"], r["y"]), xytext=(7, 4), textcoords="offset points",
-                        fontsize=8, color="#B00020")
+            if clusters and abs(r["age"] - clusters[-1][-1]["age"]) <= 3 and abs(r["y"] - clusters[-1][-1]["y"]) <= 0.08 * y_range:
+                clusters[-1].append(r)
+            else:
+                clusters.append([r])
+        for cl in clusters:
+            zs_txt = ", ".join(f"{r['z']:+.1f}" for r in cl)
+            ax.annotate(f"z = {zs_txt}", (cl[-1]["age"], max(r["y"] for r in cl)), xytext=(8, 6),
+                        textcoords="offset points", fontsize=8, color="#B00020")
 
     ax.axhline(0, color="0.6", lw=0.8)
     ax.set_xlabel("age (days in culture)")
@@ -208,10 +224,10 @@ def plot_growth_chart(centiles, zscores, title=None, path=None, y_label=None, an
     ax.set_xlim(centiles["age"].min() - 5, centiles["age"].max() + 13)
     if title:
         gb = centiles.attrs.get("grid_batch")
-        ax.set_title(title + (f" (centiles for {gb})" if gb else ""))
+        ax.set_title(title + (f"\ncentile lines for {gb}" if gb else ""), fontsize=11)
     ax.grid(alpha=0.3)
-    ax.legend(fontsize=8, loc="upper right")
+    ax.legend(fontsize=8, loc="upper left", bbox_to_anchor=(1.07, 1), frameon=False)   # outside: never covers data
     if path is not None:
         plt.tight_layout()
-        plt.savefig(path, dpi=150)
+        plt.savefig(path, dpi=150, bbox_inches="tight")
     return ax

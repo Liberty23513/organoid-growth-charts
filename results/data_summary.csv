@@ -1,0 +1,37 @@
+protocol,publication,n_samples,age_min_days,age_max_days
+"Andersen, 2020 (doi: 10.1016/j.cell.2020.11.017)","Andersen, 2020",4,45,53
+"Andersen, 2020 (doi: 10.1016/j.cell.2020.11.017); without DAPT","Andersen, 2020",1,45,45
+"Bhaduri, 2020 (doi: 10.1038/s41586-020-1962-0); directed","Bhaduri, 2020",9,35,168
+"Bhaduri, 2020 (doi: 10.1038/s41586-020-1962-0); most directed","Bhaduri, 2020",8,21,70
+"Birey, 2017 (doi: 10.1038/nature22330)","Birey, 2017",1,105,105
+"Esk, 2020 (doi: 10.1126/science.abb5390)","Vertesy, 2022",4,120,120
+"Fiorenzano, 2021 (doi: 10.1038/s41467-021-27464-5); silk","Fiorenzano, 2021",1,30,30
+"Fiorenzano, 2021 (doi: 10.1038/s41467-021-27464-5); standard","Fiorenzano, 2021",5,15,120
+"Fiorenzano, 2021 (doi:10.1038/s41467-021-27464-5); silk+laminin","Fiorenzano, 2021",1,30,30
+"Huang, 2021 (doi: 10.1016/j.stem.2021.04.006)","Huang, 2021",5,20,40
+"Jo et al., 2016 (doi: 10.1016/j.stem.2016.07.005)","Treutlein, 2023",7,7,180
+"Lancaster, 2014 (doi: 10.1038/nprot.2014.158)","Fleck, 2022",34,9,61
+"Lancaster, 2014 (doi: 10.1038/nprot.2014.158)","Kanton, 2019",29,10,120
+"Lancaster, 2014 (doi: 10.1038/nprot.2014.158)","He, 2022",18,15,63
+"Marton, 2019 (doi: 10.1038/s41593-018-0316-9)","Marton, 2019",1,127,127
+"Miura, 2020 (doi: 10.1038/s41587-020-00763-w)","Miura, 2020",3,80,83
+"Pasca, 2015 (doi: 10.1038/nmeth.3415)","Khan, 2020",2,83,83
+"Pasca, 2015 (doi: 10.1038/nmeth.3415)","Sloan, 2017",2,130,175
+"Pasca, 2015 (doi: 10.1038/nmeth.3415)","Birey, 2017",1,105,105
+"Pellegrini, 2020 (doi: 10.1126/science.aaz5626); hCO","Kelava, 2022",2,35,35
+"Pellegrini, 2020 (doi: 10.1126/science.aaz5626); hCO","Pellegrini, 2020",1,55,55
+"Pellegrini, 2020 (doi: 10.1126/science.aaz5626); hChPO","Pellegrini, 2020",3,27,53
+"Qian et al., 2016 (doi: 10.1016/j.cell.2016.04.032)","Treutlein, 2023",7,7,180
+"Qian, 2020 (doi: 10.1016/j.stem.2020.02.002)","Qian, 2020",1,150,150
+"Quadrato, 2017 (doi: 10.1038/protex.2017.049)","Uzquiano, 2022",8,113,127
+"Quadrato, 2023 (doi: no_doi)","Atamian, 2024",3,60,60
+"Sawada, 2020 (doi: 10.1038/s41380-020-0844-z)","Sawada, 2020",4,35,35
+"Trujillo, 2019 (doi: 10.1016/j.stem.2019.08.002)","Trujillo, 2019",4,30,300
+"Velasco, 2019 (doi: 10.1038/s41586-019-1289-x)","Paulsen, 2022",54,28,190
+"Velasco, 2019 (doi: 10.1038/s41586-019-1289-x)","Uzquiano, 2022",39,23,192
+"Velasco, 2019 (doi: 10.1038/s41586-019-1289-x)","Velasco, 2019",21,101,190
+"Velasco, 2019 (doi: 10.1038/s41586-019-1289-x)","Bhaduri, 2020",17,21,168
+"Watanabe, 2017 (doi: 10.1016/j.celrep.2017.09.047)","Samarasinghe, 2021",3,56,100
+"Xiang, 2019 (doi: 10.1016/j.stem.2018.12.015)","Xiang, 2019",2,34,89
+"Yoon, 2019 (doi: 10.1038/s41592-018-0255-0)","Bowles, 2021",14,60,180
+"Yoon, 2019 (doi: 10.1038/s41592-018-0255-0)","Yoon, 2019",3,105,105
